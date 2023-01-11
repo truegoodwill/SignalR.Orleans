@@ -1,7 +1,7 @@
 ﻿using Orleans;
-using SignalR.Orleans.Clients;
-using SignalR.Orleans.Groups;
 using SignalR.Orleans.Users;
+using SignalR.Orleans.Groups;
+using SignalR.Orleans.Clients;
 
 namespace SignalR.Orleans.Core
 {
@@ -15,7 +15,7 @@ namespace SignalR.Orleans.Core
             _grainFactory = grainFactory;
             var hubType = typeof(THub);
             _hubName = hubType.IsInterface && hubType.Name.StartsWith("I")
-                ? hubType.Name.Substring(1)
+                ? hubType.Name[1..]
                 : hubType.Name;
         }
 
